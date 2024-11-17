@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Minha Princesa</title>
+    <style>
+        /* Redefinindo estilos padrão */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9e2f5;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+            background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.2) 1px, transparent 1px, transparent 100%);
+            background-size: 100px 100px;
+            scroll-behavior: smooth;
+        }
+
+        /* Adicionando o texto "Livia Vianna" como fundo */
+        body::before {
+            content: "Livia Vianna";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 10rem;
+            font-weight: bold;
+            color: rgba(255, 0, 102, 0.164); /* Cor suave e opacidade baixa */
+            pointer-events: none; /* Para que o texto de fundo não interfira nos outros elementos */
+            z-index: -2; /* Coloca o texto atrás de todos os elementos */
+            display: grid;
+            place-items: center;
+            text-align: center;
+            line-height: 1.2;
+            transform: rotate(-45deg); /* Rotaciona o texto */
+            user-select: none; /* Desativa a seleção de texto */
+            animation: scatterText 10s linear infinite;
+        }
+
+        @keyframes scatterText {
+            0% {
+                transform: translateX(0) translateY(0) rotate(-45deg);
+            }
+            100% {
+                transform: translateX(500px) translateY(500px) rotate(-45deg);
+            }
+        }
+
+        /* Cabeçalho */
+        h1 {
+            text-align: center;
+            color: #ff3366;
+            font-size: 3em;
+            margin-top: 40px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Georgia', serif;
+            z-index: 1; /* Certifica que o cabeçalho ficará visível sobre o fundo */
+        }
+
+        /* Carrossel de fotos no estilo Stories */
+        /* Carrossel de fotos no estilo Stories */
+.carousel {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    height: 400px;                /* Altura fixa para o carrossel */
+    overflow: hidden;             /* Esconde as partes das imagens que saem do contêiner */
+    z-index: 2;
+}
+
+.carousel-images {
+    position: absolute;
+    transition: opacity 1s ease-in-out;
+    width: 100%;
+    height: 100%;                 /* Altura do contêiner */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;                   /* Certifica que as imagens sejam visíveis por padrão */
+}
+
+/* Ajuste das imagens para o carrossel */
+.carousel-images img {
+    width: 100%;                  /* As imagens ocuparão toda a largura do carrossel */
+    height: 100%;                 /* A altura das imagens será 100% da altura do carrossel */
+    object-fit: contain;          /* As imagens serão redimensionadas para se ajustar ao carrossel sem cortar */
+    border-radius: 15px;          /* Bordas arredondadas */
+    margin: 0 15px;               /* Espaçamento entre as imagens */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;                   /* Inicialmente as imagens estarão invisíveis */
+    transition: opacity 1s ease-in-out;
+}
+
+/* Imagem ativa vai ficar visível */
+.carousel-images img.active {
+    opacity: 1;                   /* Quando a imagem estiver ativa, ela vai ficar visível */
+}
+
+
+        /* Texto romântico */
+        .texto-amor {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #d81b60;
+            font-weight: bold;
+            line-height: 1.6;
+            font-family: 'Georgia', serif;
+            padding: 0 20px;
+        }
+
+        /* Música de fundo com estilo */
+        .audio {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .audio audio {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            position: relative;
+            padding: 10px;
+            border: 3px solid #ff3366;
+            animation: glowEffect 1.5s infinite alternate;
+        }
+
+        @keyframes glowEffect {
+            0% {
+                box-shadow: 0 0 10px rgba(255, 51, 102, 0.7), 0 0 20px rgba(255, 51, 102, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 20px rgba(255, 51, 102, 0.9), 0 0 30px rgba(255, 51, 102, 0.6);
+            }
+        }
+
+        /* Texto sobre a música */
+        .texto-sobre-musica {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 1.3em;
+            color: #333;
+            font-weight: normal;
+            line-height: 1.6;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #fff0f5;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        .texto-sobre-musica p {
+            font-style: italic;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Coração único abaixo do texto da música */
+        .heart {
+            text-align: center;
+            font-size: 50px;
+            color: red;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .heart:hover {
+            transform: scale(1.2); /* Aumenta o tamanho do coração ao passar o mouse */
+        }
+
+        /* Ajuste para o layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Corações flutuantes */
+        .floating-heart {
+            position: absolute;
+            font-size: 30px;
+            color: red;
+            opacity: 0;
+            animation: heart-float 4s ease-in-out infinite;
+        }
+
+        @keyframes heart-float {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-200px) scale(1.5);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Cabeçalho -->
+        <h1>Para Minha Princesa</h1>
+
+        <!-- Carrossel de fotos no estilo Stories -->
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="foto1.jpeg" alt="Foto do casal 1" class="active">
+                <img src="foto2.jpeg" alt="Foto do casal 2">
+                <img src="foto3.jpeg" alt="Foto do casal 3">
+            </div>
+        </div>
+
+        <!-- Texto romântico -->
+        <div class="texto-amor">
+            <p>Meu amor, não consigo encontrar palavras que expressem o quanto você significa para mim. Cada momento ao seu lado é um presente, e a cada dia, me sinto mais apaixonado por você. Você é mais linda do que qualquer estrela no universo, a distância pode até me impedir de te ver, mas nunca vai impedir de amar você. 2024 ficou feliz por sua causa, se não fosse você seria so mais um ano como os outros. E como eu falei no começo não consigo encontrar palavras pra dizer o quanto eu te amo, essas frases foram apenas um grão de areia comparado ao infinito que equivale o meu amor por ti. UNIVERSO X INFINITO = MEU AMOR POR VOCÊ. Te amo infinitamente minha deusa!</p>
+        </div>
+
+        <!-- Música de fundo -->
+        <div class="audio">
+            <audio controls autoplay loop>
+                <source src="audio.mpeg" type="audio/mp3">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+        </div>
+
+        <!-- Texto sobre a música -->
+        <div class="texto-sobre-musica">
+            <p>Uma vez te vi chorando na minha frente, e não consigo explicar a sensação tão ruim que senti naquele momento, então sem saber que a gente ia ficar junto, eu prometi pra mim mesmo que nunca mais ia querer te ver chorando e sempre ia te fazer rir. Então decidi colocar essa música só para te falar isso.</p>
+        </div>
+
+        <!-- Coração abaixo do texto da música -->
+        <div class="heart" onclick="mostrarMensagem()"> ❤️ </div>
+    </div>
+
+    <script>
+        // Função para criar corações flutuantes
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.textContent = "❤️"; // Usando o emoji de coração
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+            document.body.appendChild(heart);
+
+            // Remove o coração após a animação
+            setTimeout(() => {
+                heart.remove();
+            }, 4000); // Tempo da animação (4 segundos)
+        }
+
+        // Gera corações a cada 0,5 segundos
+        setInterval(createHeart, 500);
+
+        // Função para exibir a mensagem
+        function mostrarMensagem() {
+            const novaJanela = window.open('', '_blank', 'width=500, height=500');
+            novaJanela.document.write(`
+                <div style="text-align: center; margin-top: 200px;">
+                    <h1 style="font-size: 3rem;">EU TE AMO LIVIA</h1>
+                </div>
+            `);
+            novaJanela.document.body.style.margin = '0';
+            novaJanela.document.body.style.height = '100vh';
+            novaJanela.document.body.style.display = 'flex';
+            novaJanela.document.body.style.justifyContent = 'center';
+            novaJanela.document.body.style.alignItems = 'center';
+            novaJanela.document.body.style.backgroundColor = '#ff3366';
+            novaJanela.document.body.style.color = '#fff';
+            novaJanela.document.body.style.fontSize = '3rem';
+            novaJanela.document.body.style.textAlign = 'center';
+            novaJanela.document.body.style.fontFamily = 'Georgia, serif';
+        }
+
+        // Lógica para o carrossel de imagens
+        let index = 0;
+        const images = document.querySelectorAll('.carousel-images img');
+        const totalImages = images.length;
+
+        // Função para mostrar a imagem ativa
+        function showImage() {
+            images.forEach(img => img.classList.remove('active')); // Remove a classe 'active' de todas as imagens
+            images[index].classList.add('active'); // Adiciona 'active' à imagem atual
+
+            // Incrementa o índice para a próxima imagem
+            index = (index + 1) % totalImages;
+        }
+
+        // Exibe a imagem a cada 3 segundos
+        setInterval(showImage, 3000);
+        showImage(); // Chama a função uma vez para começar
+    </script>
+
+</body>
+</html>
